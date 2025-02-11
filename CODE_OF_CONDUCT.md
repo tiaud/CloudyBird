@@ -1,5 +1,4 @@
 # **Contributor Code of Conduct**  
-
 ## **My Commitment**  
 I want **Cloudy Bird** to be a welcoming and inclusive project for all contributors. I'd like this to be a harrasement-free enviorment for every person, no matter their experience level or anything else.
 
