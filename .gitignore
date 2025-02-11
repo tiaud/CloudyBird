@@ -1,0 +1,10 @@
+# Ignore IDE and editor settings
+.idea/            # JetBrains (PyCharm) project settings
+
+# Ignore compiled Python files
+__pycache__/      # Cached Python bytecode
+
+# Ignore high score and temporary files
+highscore.txt     # Prevent personal high scores from being tracked
+__pycache__/
+.idea/
