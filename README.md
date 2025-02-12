@@ -11,7 +11,7 @@ Cloudy Bird is a Flappy Bird–inspired game built with Python and Pygame made f
 
 1. **Clone the repository:**
      ```bash
-     git clone https://github.com/yourusername/CloudyBird.git
+     git clone https://github.com/tiaud/CloudyBird.git
      ```
   
 2. **Navigate to the project directory:**
