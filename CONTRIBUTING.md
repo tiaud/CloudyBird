@@ -5,7 +5,7 @@ Thank You for considering contributing to **Cloudy Bird**! 🎮 This document ou
 ## **How to Contribute**  
 
 ### **1. Report Bugs or Suggest Features**  
-- Check the [Issues](https://github.com/tiaud/CloudyBird/issues) tab to see if your issue is already reported.  
+- Check the [Issues](https://github.com/**yourusername**/CloudyBird/issues) tab to see if your issue is already reported.  
 - If not, create a new issue describing the problem or feature request.  
 - Provide clear steps to reproduce the bug (if applicable).  
 
