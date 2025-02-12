@@ -120,7 +120,7 @@ def game_loop(): # Run one full session of the game (from start to collision).
         clock.tick(30)
 
 
-def main(): # The main function to run the game.
+def main():
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
     while True:
@@ -128,14 +128,17 @@ def main(): # The main function to run the game.
         state, score = game_loop()
         if state == "quit":
             break
-        action = end_screen(score)
-        if action in ("menu", "restart"):
-            continue
-        elif action == "quit":
-            break
+        while True:
+            action = end_screen(score)
+            if action == "menu":
+                break
+            elif action == "restart":
+                state, score = game_loop()
+            elif action == "quit":
+                pygame.quit()
+                exit()
 
     pygame.quit()
-
 
 if __name__ == "__main__":
     main()
