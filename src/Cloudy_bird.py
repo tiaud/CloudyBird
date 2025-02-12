@@ -40,8 +40,31 @@ def start_screen(): # Display the start screen and wait for the user to press SP
                 if event.key == pygame.K_SPACE:
                     return
                 if event.key == pygame.K_ESCAPE:
+                    confirm_quit()
+
+
+def confirm_quit(): # Display a quit confirmation popup
+    while True:
+        config.screen.blit(config.bg_img, (0, 0))
+        message = config.font.render("Quit game?", True, (227, 138, 193))
+        yes_text = config.font.render("Y - Yes", True, (227, 138, 193))
+        no_text = config.font.render("N - No", True, (227, 138, 193))
+
+        config.screen.blit(message, (config.WIDTH // 2 - message.get_width() // 2, 250))
+        config.screen.blit(yes_text, (config.WIDTH // 2 - yes_text.get_width() // 2, 300))
+        config.screen.blit(no_text, (config.WIDTH // 2 - no_text.get_width() // 2, 350))
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_y:
                     pygame.quit()
                     exit()
+                if event.key == pygame.K_n:
+                    return  # Return to the game
 
 
 def end_screen(score): # Display the end screen, update high score if needed, and return the next action.
@@ -135,8 +158,8 @@ def main():
             elif action == "restart":
                 state, score = game_loop()
             elif action == "quit":
-                pygame.quit()
-                exit()
+                confirm_quit()
+
 
     pygame.quit()
 
