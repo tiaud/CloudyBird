@@ -39,6 +39,7 @@ Cloudy Bird is a Flappy Bird–inspired game built with Python and Pygame made f
     ├── assets/             # Game assets (images, sounds, fonts)
     ├── src/                # Source code
     ├── README.md           # Project overview
+    ├── requierments.txt    # Project overview
     ├── LICENSE             # License file
     ├── CONTRIBUTING.md     # Guidelines for contributing
     ├── CODE_OF_CONDUCT.md  # Code of conduct
