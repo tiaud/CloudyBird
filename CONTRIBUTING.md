@@ -13,7 +13,7 @@ Thank You for considering contributing to **Cloudy Bird**! 🎮 This document ou
 - Click the **Fork** button at the top of the repository.  
 - Clone your forked repository:  
   ```bash
-  git clone https://github.com/tiaud/CloudyBird.git
+  git clone https://github.com/yourusername/CloudyBird.git
   cd CloudyBird
   ```
 
