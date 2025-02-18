@@ -1,41 +1,50 @@
-import pygame
-import config
+import pygame, os, config
 
 class Bird:
-    """Represents the player-controlled bird."""
-
     def __init__(self):
         self.x = 50
         self.y = config.HEIGHT // 2
         self.velocity = 0
-        self.gravity = 1
-        self.jump_strength = -8.5
-        self.image = config.bird_img
-        self.rect = self.image.get_rect(topleft=(self.x, self.y))
-        self.hitbox = pygame.Rect(
-            self.x, self.y,
-            self.image.get_width() - 8,
-            self.image.get_height() - 16
-        )
+        self.gravity = 0.9
+        self.jump_strength = -9
+
+        self.images = [pygame.image.load(os.path.join(config.ASSETS_PATH, f"bird{num}.png")).convert_alpha() for num in range(1, 4)]
+        self.index = 0
+        self.counter = 0
+        self.image = self.images[self.index]
+        self.rect = self.image.get_rect(center=(self.x, self.y))
+        self.hitbox = pygame.Rect(self.rect.x + 4, self.rect.y + 8,
+                                  self.image.get_width() - 8, self.image.get_height() - 16)
+        self.angle = 0
 
     def jump(self):
-        """Set the upward velocity for a jump."""
         self.velocity = self.jump_strength
 
     def move(self):
-        """Update the bird's position if the game is active."""
         if config.game_start:
-            self.velocity += self.gravity
+            self.velocity = min(self.velocity + self.gravity, 8)
             self.y += self.velocity
-            self.rect.y = self.y
-            self.hitbox.y = self.y + 8
-
-            # Prevent the bird from moving off the screen
-            if self.y < 0:
-                self.y = 0
-            if self.y > config.HEIGHT - self.image.get_height():
-                self.y = config.HEIGHT - self.image.get_height()
+            self.rect.centery = self.y
+            self.hitbox.centery = self.y + 8
+            self.angle = self.velocity * -2
+            self.counter += 1
+            if self.counter > 5:
+                self.counter = 0
+                self.index = (self.index + 1) % len(self.images)
+            self.image = self.images[self.index]
+            self.y = max(0, min(self.y, config.HEIGHT - self.image.get_height()))
 
     def draw(self, screen):
-        """Draw the bird to the given screen."""
-        screen.blit(self.image, (self.x, self.y))
+        rotated = pygame.transform.rotate(self.image, self.angle)
+        new_rect = rotated.get_rect(center=self.rect.center)
+        screen.blit(rotated, new_rect.topleft)
+        
+    def reset(self):
+        self.velocity = 0
+        self.y = config.HEIGHT // 2
+        self.rect.centery = self.y
+        self.hitbox.centery = self.y + 8
+        self.angle = 0
+        self.index = 0
+        self.counter = 0
+        self.image = self.images[self.index]
