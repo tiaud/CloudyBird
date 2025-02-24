@@ -98,9 +98,6 @@ def settings_screen():
                     slider_rect = pygame.Rect(slider_x, slider_y, slider_width, slider_height)
                     if slider_rect.collidepoint(mx, my):
                         dragging = True
-                    btn_rect, _ = draw_settings_button()
-                    if btn_rect.collidepoint(mx, my):
-                        settings_screen()
             if event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     dragging = False
